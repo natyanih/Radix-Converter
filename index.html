@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><title>Number Converter</title>
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<style type="text/css" media="screen">
+	body{
+		padding-top: 20px;
+	}
+
+    .hero-unit {
+    	width: 600px;
+    	margin: 0 auto;
+		height: 100%;
+		min-height: 400px;
+		padding: 40px;
+		margin-bottom: 30px;
+		font-size: 18px;
+		font-weight: 200;
+		line-height: 30px;
+		text-align: center;
+		vertical-align: middle;
+		color: inherit;
+		background-color: #eeeeee;
+		-webkit-border-radius: 6px;
+		   -moz-border-radius: 6px;
+		        border-radius: 6px;
+	}
+
+	.hero-unit h1 {
+	  margin-bottom: 0;
+	  font-size: 24px;
+	  line-height: 1;
+	  letter-spacing: -1px;
+	  color: inherit;
+	}
+
+	.hero-unit ul {
+		text-align: left;
+	}
+
+	.hero-unit li {
+	  line-height: 30px;
+	  list-style: none;
+	}	
+
+	.notifications{
+		font-color:red;
+		padding: 10px;
+		text-align: center;
+	}
+
+	label{
+		font-weight: bold;
+	}
+
+	pre{
+		text-align: left;
+	}
+</style>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<div class="container hero-unit">
+		<h1 class="lead">This app converts integers to corresponding number based on selected radix.</h1><hr />
+		<form class="form-horizontal">
+			<div class="control-group">
+			    <label class="control-label" for="inputNumber">Number:</label>
+			    <div class="controls">
+			        <input type="text" id="inputNumber" placeholder="Input Number">
+			    </div>
+		  	</div>
+
+		  	<div class="control-group">
+			    <label class="control-label" for="inputRadix">Radix:</label>
+			    <div class="controls">
+			        <select id="inputRadix">
+			        	<option>2</option>
+			        	<option>3</option>
+			        	<option>4</option>
+			        	<option>5</option>
+			        	<option>6</option>
+			        	<option>7</option>
+			        	<option>8</option>
+			        	<option>9</option>
+			        	<option>10</option>
+			        	<option>11</option>
+			        	<option>12</option>
+			        	<option>13</option>
+			        	<option>14</option>
+			        	<option>15</option>
+			        	<option>16</option>			        	
+			        </select>
+			    </div>
+		  	</div>
+
+		  	<div class="control-group">
+			    <label class="control-label" for="conversionResult">Result:</label>
+			    <div class="controls">
+			      <textarea id="conversionResult" placeholder="Result" rows="8" ></textarea>
+			    </div>
+		  	</div>
+			
+		</form>
+
+	</div>
+
+<script src="js/jquery.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+  	$("#inputNumber").change(function(){
+  		radix =  parseInt($("#inputRadix option:selected").text());
+  		num =  parseFloat($("#inputNumber").val());
+  		result = num.toString(radix); // toString converts num based on passed radix
+
+  		//update textarea value
+  		$("#conversionResult").val(result);
+  	});
+
+  	$("select#inputRadix").change(function(){
+  		radix =  parseInt($("#inputRadix option:selected").text());  		
+  		num =  parseFloat($("#inputNumber").val());
+  		result = num.toString(radix); // toString converts num based on passed radix
+
+  		//update textarea value
+  		$("#conversionResult").val(result);
+  	});
+});
+
+</script>
+</body>
+</html>
